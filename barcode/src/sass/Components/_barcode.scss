@@ -1,0 +1,36 @@
+.barcode {
+  font-size: 2rem;
+  &__list {
+    display: flex;
+  }
+  &__item {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__description {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__form {
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    margin: auto;
+  }
+  &__label,
+  &__input {
+    font-size: 2rem;
+  }
+}
+.img__container {
+  border-radius: 1rem;
+  width: 10rem;
+  height: 10rem;
+  overflow: hidden;
+}

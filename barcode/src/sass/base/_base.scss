@@ -1,0 +1,40 @@
+html {
+  font-size: 10px;
+  font-style: normal;
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}
+#root {
+  max-width: 1440px;
+  margin: auto;
+  min-height: 100vh;
+  color: $color-txt-dark;
+  background-color: $color-bgc-body;
+  transition: all 0.5s;
+}
+#root.dark {
+  color: $color-txt-light;
+  background-color: $color-bgc-backdrop;
+  .button {
+    background-color: $color-btn-hover;
+    color: $color-btn;
+    > svg {
+      filter: $dark-filter-color;
+    }
+
+    &:hover {
+      background-color: $color-btn;
+      > svg {
+        filter: $light-filter-color;
+      }
+      color: $color-btn-hover;
+    }
+  }
+}
+.section,
+.header {
+  max-width: 900px;
+  padding: 20px;
+  margin: auto;
+}
