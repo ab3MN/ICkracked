@@ -1,8 +1,13 @@
 [
   {
-    "id": "hellodId",
-    "name": "Charge flex ",
-    "barcode": "200000056678",
-    "imgSrc": "./src/assets/barcode/Charge__flex--6__576.JPG"
+    "category": "Charge Flex",
+    "goods": [
+      {
+        "id": "hellodId",
+        "name": "Charge flex ",
+        "barcode": "200000056678",
+        "file": "./src/assets/barcode/Charge__flex--6__576.JPG"
+      }
+    ]
   }
 ]

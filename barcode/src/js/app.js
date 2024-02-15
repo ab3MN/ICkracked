@@ -1,5 +1,12 @@
-import Barcode from "./Components/Barcode";
 import BARCODE__DATA from "../data/barcode.json";
 
-const barcode = new Barcode(document.querySelector("#root"), BARCODE__DATA);
+const ROOT = document.querySelector("#root");
+
+import Barcode from "./Components/Barcode";
+const barcode = new Barcode(ROOT, BARCODE__DATA);
 barcode.generateBarCode();
+
+import BarcodeFilter from "./Components/BarcodeFilter";
+
+const barcodeFilter = new BarcodeFilter(ROOT);
+barcodeFilter.generateFiter();

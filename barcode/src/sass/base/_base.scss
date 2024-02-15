@@ -38,3 +38,114 @@ html {
   padding: 20px;
   margin: auto;
 }
+
+.submit__button {
+  width: 20rem;
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+  padding: 1rem;
+  color: $color-btn-hover;
+  overflow: hidden;
+  transition: 0.5s all;
+  letter-spacing: 0.4rem;
+  border: none;
+  cursor: pointer;
+  background: none;
+  margin: 1rem 0;
+  font-weight: bold;
+  &:hover {
+    color: $color-btn;
+    background: $color-btn-hover;
+    border-radius: 5px;
+    box-shadow: 0 0 5px $color-btn-hover, 0 0 25px $color-btn-hover,
+      0 0 50px $color-btn-hover, 0 0 100px $color-btn-hover;
+    & span:nth-child(1) {
+      background: linear-gradient(90deg, transparent, $color-btn);
+    }
+    & span:nth-child(2) {
+      background: linear-gradient(180deg, transparent, $color-btn);
+    }
+    & span:nth-child(3) {
+      background: linear-gradient(270deg, transparent, $color-btn);
+    }
+    & span:nth-child(4) {
+      background: linear-gradient(360deg, transparent, $color-btn);
+    }
+  }
+  & span {
+    position: absolute;
+    display: block;
+  }
+  & span:nth-child(1) {
+    top: 0%;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $color-btn-hover);
+    animation: btn_anim1 1s linear infinite;
+  }
+  @keyframes btn_anim1 {
+    0% {
+      left: -100%;
+    }
+    50%,
+    100% {
+      left: 100%;
+    }
+  }
+  & span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(180deg, transparent, $color-btn-hover);
+    animation: btn_anim2 1s linear infinite;
+    animation-delay: 0.25s;
+  }
+  @keyframes btn_anim2 {
+    0% {
+      top: -100%;
+    }
+    50%,
+    100% {
+      top: 100%;
+    }
+  }
+  & span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, $color-btn-hover);
+    animation: btn_anim3 1s linear infinite;
+    animation-delay: 0.5s;
+  }
+  @keyframes btn_anim3 {
+    0% {
+      right: -100%;
+    }
+    50%,
+    100% {
+      right: 100%;
+    }
+  }
+  & span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, $color-btn-hover);
+    animation: btn_anim4 1s linear infinite;
+    animation-delay: 0.75s;
+  }
+  @keyframes btn_anim4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,
+    100% {
+      bottom: 100%;
+    }
+  }
+}

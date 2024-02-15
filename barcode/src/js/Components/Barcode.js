@@ -1,5 +1,8 @@
 import { createDomNode } from "./CreateNode/createDomNode";
 import BarcodeForm from "./BarcodeForm";
+import Modal from "./Modal";
+
+const modal = new Modal();
 
 export default class Barcode extends BarcodeForm {
   constructor(root, data) {
@@ -14,7 +17,9 @@ export default class Barcode extends BarcodeForm {
 
   generateBarCode() {
     this.createSection();
-    this.wrapper.append(this.generateForm());
+    this.generateForm();
+    this.form.onsubmit = this.handleSumbit;
+    this.wrapper.append(this.form);
 
     this.createList();
     this.data.forEach((data) => this.createItem(data));
@@ -32,7 +37,7 @@ export default class Barcode extends BarcodeForm {
     const list = createDomNode("ul", "barcode__list");
     Object.assign(this, { list });
   }
-  createItem({ imgSrc, name, barcode }) {
+  createItem({ file, name, barcode }) {
     const item = createDomNode("li", "barcode__item");
 
     item.innerHTML = `
@@ -41,9 +46,24 @@ export default class Barcode extends BarcodeForm {
         <span>${barcode}</span>
     </div>
     <div class="img__container">
-        <img src=${imgSrc} alt="barcode__img">
+        <img src=${file} alt="barcode__img">
     </div>
     `;
+    item.onclick = this.handleOpenImg;
     this.list.append(item);
   }
+
+  //LISTENERS
+
+  handleSumbit = (e) => (e.preventDefault(), this.createItem(this.value));
+
+  handleOpenImg = (e) => {
+    const { src } = e.target;
+    if (!src) return;
+    const img = `
+    <div class="modal__img">
+      <img src=${src} alt="barcode__img">
+    </div>`;
+    modal.genereateModal(img);
+  };
 }

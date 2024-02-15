@@ -20,6 +20,7 @@ export default class BarcodeForm {
   generateForm() {
     this.createForm();
     this.createInput();
+    this.createButton();
     return this.form;
   }
 
@@ -50,14 +51,15 @@ export default class BarcodeForm {
       },
       {
         id: "barcode__file",
-        labelText: "Barcode",
-        name: "barcode",
+        labelText: "Upload",
+        name: "file",
         placeholder: "Enter barcode",
         onchange: this.handleChange,
         type: "file",
       },
     ].forEach((el) => {
       const { id, labelText, name, placeholder, type, onchange } = el;
+      const inputContainer = createDomNode("div", "input__container");
       const label = createLabel(id, labelText, "barcode__label");
       const input = createInput(
         {
@@ -69,8 +71,10 @@ export default class BarcodeForm {
         onchange,
         "barcode__input"
       );
-      label.append(input);
-      this.form.append(label);
+      inputContainer.append(label);
+      inputContainer.append(input);
+
+      this.form.append(inputContainer);
     });
   }
   createButton() {
@@ -80,12 +84,22 @@ export default class BarcodeForm {
       "submit__button",
       "barcode__submit"
     );
+    button.type = "submit";
+    button.innerHTML = `
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    UPLOAD
+    `;
+    this.form.append(button);
   }
 
   //Listeners
   handleChange = (e) => {
-    const { value, name } = e.target;
-    this.value = { ...this.value, [name]: value.split(/(\\|\/)/g).pop() };
-    console.log(this.value);
+    let { value, name, type } = e.target;
+    if (type === "file")
+      value = "./src/assets/barcode/" + value.split(/(\\|\/)/g).pop();
+    this.value = { ...this.value, [name]: value };
   };
 }
